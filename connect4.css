@@ -22,7 +22,7 @@
 }
 
 #column-top td:hover {
-  background-color: gold;
+  background-color: rgb(252, 248, 225);
   border-radius:50%;
 }
 
@@ -31,5 +31,5 @@
 }
 
 .p2{
-  background-color: black;
+  background-color: blue;
 }

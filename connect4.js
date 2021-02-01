@@ -29,7 +29,7 @@ function makeBoard() {
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.getElementById("board")
-  // TODO: add comment for this code
+  //Create the top row of the board that handles clicks and puts pieces on the board
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
@@ -41,7 +41,7 @@ function makeHtmlBoard() {
   }
   htmlBoard.append(top);
 
-  // TODO: add comment for this code
+  //create the board row by row
   for (let y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
     for (let x = 0; x < WIDTH; x++) {
@@ -98,7 +98,6 @@ function handleClick(evt) {
  
   // TODO: add line to update in-memory board
   placeInTable(y, x);
- 
 
   // check for win
   if (checkForWin()) {
@@ -107,48 +106,22 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  /*
-  function isfull(arr) {
-    return arr.every(function(val) {
-      return val > 0;
+  function fullCheck(num) {
+    let isFull = num.every(function(val) {
+     return val > 0;
     })
+    return isFull;
   }
-  */
- /*if(board.every((val) => {
-    return val > 0
-  })) {
-    return endGame("looks like a tie");
-  }
-  */
- //function cellFull(val) {
-   // return val > 0;
- //}
-
- function fullCheck(arr) {
-   return arr.every(function(val){return val > 0;});
- }
-/*
-function isFull() {
-    for(let i =0; i < HEIGHT; i++) {
-      for(let z = 0; z < WIDTH; z++) {
-        if(board[i][z] == 0) {
-        return false;
-      }
-    }
-    return true;
-  }
-}
-  */
-  if(fullCheck(board)) {
+ 
+  if(board.every(fullCheck)) {
     return endGame("looks like a tie");
   }
  
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = currPlayer == 2 ? 1 : 2;
-  //board.every([y,x]) => {
-
 }
+
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
@@ -169,6 +142,8 @@ function checkForWin() {
   }
 
   // TODO: read and understand this code. Add comments to help you.
+  // selects the spaces on the board that would create a win condition for each position
+  // and check if that win condition is met.
 
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
