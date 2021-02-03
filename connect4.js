@@ -80,6 +80,8 @@ function placeInTable(y, x) {
 
 function endGame(msg) {
   alert(msg);
+  const top = document.querySelector("#column-top");
+    top.removeEventListener("click", this.handleGameClick, false);
 }
 /** handleClick: handle click of column top to play piece */
 
